@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+/**
+ * Listing of pronunciations
+ */
+Route::get('/pronunciations', 'RandomUserGeneratorController@index')->name('pronunciations.index');
