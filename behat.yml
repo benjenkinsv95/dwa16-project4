@@ -4,3 +4,7 @@ default:
     Behat\MinkExtension\ServiceContainer\MinkExtension:
       default_session: laravel
       laravel: ~
+      show_auto: true
+      # Make sure firefox is added to your path
+      show_cmd: 'firefox %s'
+

@@ -15,6 +15,9 @@
 ## Details for teaching team [TODO]
 My GitHub project has an *.idea* folder and a *p4.iml* file committed. These are configuration files for the IDE I use, IntelliJ IDEA, and are not outside code.
 
+My authentication uses BDD and closely follows this tutorial: https://laracasts.com/lessons/laravel-5-and-behat-driving-authentication
+
+
 ## Outside code [TODO]
 * Bootstrap: http://getbootstrap.com/
 * Bootstrap Flatly Theme: http://bootswatch.com/flatly/

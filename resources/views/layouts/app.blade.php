@@ -38,12 +38,12 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="http://p1.ben-jenkins.com/">Portfolio</a></li>
                             <li><a href="https://github.com/benjenkinsv95/dwa16-project1">Portfolio GitHub <i class="fa fa-github"
-                                                                aria-hidden="true"></i></a></li>
+                                                                                                              aria-hidden="true"></i></a></li>
 
                             <li class="divider"></li>
                             <li><a href="http://p2.ben-jenkins.com/">xkcd Password Generator</a></li>
                             <li><a href="https://github.com/benjenkinsv95/dwa16-project2">xkcd Password Generator GitHub <i class="fa fa-github"
-                                                                                                              aria-hidden="true"></i></a></li>
+                                                                                                                            aria-hidden="true"></i></a></li>
 
                             <li class="divider"></li>
                             <li><a href="http://p3.ben-jenkins.com/">Developer's Best Friend</a></li>
@@ -59,7 +59,7 @@
 
                     <!--Tacking in a font-awesome GitHub icon to make it look fancy-->
                     <li><a href="https://github.com/benjenkinsv95/dwa16-project3" target='_blank'>GitHub <i class="fa fa-github"
-                                                                                            aria-hidden="true"></i></a>
+                                                                                                            aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
