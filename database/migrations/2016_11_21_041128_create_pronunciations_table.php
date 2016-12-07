@@ -21,7 +21,7 @@ class CreatePronunciationsTable extends Migration
 
             $table->string('word');
             # TODO(ben): phonemes()
-            # TODO(ben): voices()
+            # TODO(ben): voice()
 
         });
     }
