@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     {
         // Use bcrypt so passwords are secure. This is the same thing that
         // register uses.
-        
+
         DB::table('users')->insert([
             'created_at' => Carbon\Carbon::now()->toDateTimeString(),
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),

@@ -68,6 +68,7 @@ Route::get('/show-login-status', function() {
 });
 
 Auth::routes();
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
