@@ -58,10 +58,12 @@
                         </ul>
                     </li>
 
-                    <!--Tacking in a font-awesome GitHub icon to make it look fancy-->
-                    <li><a href="https://github.com/benjenkinsv95/dwa16-project3" target='_blank'>GitHub <i class="fa fa-github"
-                                                                                                            aria-hidden="true"></i></a>
-                    </li>
+                    @if(Auth::check())
+                        <li><a href='/logout'>Log out</a></li>
+                    @else
+                        <li><a href='/login'>Log in</a></li>
+                        <li><a href='/register'>Register</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
