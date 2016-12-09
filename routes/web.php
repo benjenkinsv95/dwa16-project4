@@ -12,12 +12,29 @@
 */
 
 
+Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
-/**
- * Listing of pronunciations
- */
-Route::get('/pronunciations', 'RandomUserGeneratorController@index')->name('pronunciations.index');
+Route::get('/pronunciations', 'PronunciationController@index')->name('pronunciations.index');
+Route::get('/pronunciations/create', 'PronunciationController@create')->name('pronunciations.create');
+Route::post('/pronunciations/create', 'PronunciationController@store')->name('pronunciations.store');
+Route::get('/pronunciations/{pronunciation}', 'PronunciationController@show')->name('pronunciations.show');
+Route::get('/pronunciations/{pronunciation}/edit', 'PronunciationController@edit')->name('pronunciations.edit');
+Route::post('/pronunciations/{pronunciation}/edit', 'PronunciationController@update')->name('pronunciations.update');
+Route::post('/pronunciations/{pronunciation}', 'PronunciationController@destroy')->name('pronunciations.destroy');
 
+Route::get('/voices', 'VoiceController@index')->name('voices.index');
+Route::get('/voices/create', 'VoiceController@create')->name('voices.create');
+Route::post('/voices/create', 'VoiceController@store')->name('voices.store');
+Route::get('/voices/{voice}', 'VoiceController@show')->name('voices.show');
+Route::get('/voices/{voice}/edit', 'VoiceController@edit')->name('voices.edit');
+Route::post('/voices/{voice}/edit', 'VoiceController@update')->name('voices.update');
+
+Auth::routes();
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+
+// TODO(ben): Delete temporary route
 Route::get('/debug', function() {
 
     echo '<pre>';
@@ -66,9 +83,3 @@ Route::get('/show-login-status', function() {
 
     return;
 });
-
-Auth::routes();
-Route::get('/logout','Auth\LoginController@logout')->name('logout');
-
-Route::get('/home', 'HomeController@index');
-Route::get('/', 'HomeController@index');

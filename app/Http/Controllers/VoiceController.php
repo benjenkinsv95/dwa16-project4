@@ -13,7 +13,7 @@ class VoiceController extends Controller
      */
     public function index()
     {
-        //
+        return 'Listing of voices';
     }
 
     /**
@@ -23,7 +23,7 @@ class VoiceController extends Controller
      */
     public function create()
     {
-        //
+        return 'Show form to add a voice';
     }
 
     /**
@@ -34,7 +34,7 @@ class VoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return 'Process form to add voice';
     }
 
     /**
@@ -45,7 +45,7 @@ class VoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'Show an individual voice';
     }
 
     /**
@@ -56,7 +56,7 @@ class VoiceController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'Show form to edit voice';
     }
 
     /**
@@ -68,17 +68,6 @@ class VoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return 'Process form to edit voice';
     }
 }
