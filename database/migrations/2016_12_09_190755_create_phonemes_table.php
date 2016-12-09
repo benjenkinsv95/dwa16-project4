@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVoicesTable extends Migration
+class CreatePhonemesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class CreateVoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('voices', function (Blueprint $table) {
+        Schema::create('phonemes', function (Blueprint $table) {
 
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('name');
-            $table->string('language');
+            $table->string('sound');
+            $table->integer('stress_level')->unsigned();
+            $table->integer('order')->unsigned();
 
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('pronunciation_id')->unsigned();
+            $table->foreign('pronunciation_id')->references('id')->on('pronunciations');
         });
     }
 
@@ -33,6 +34,6 @@ class CreateVoicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('voices');
+        Schema::drop('phonemes');
     }
 }

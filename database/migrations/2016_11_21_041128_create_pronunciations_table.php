@@ -20,9 +20,12 @@ class CreatePronunciationsTable extends Migration
             $table->timestamps();
 
             $table->string('word');
-            # TODO(ben): phonemes()
-            # TODO(ben): voice()
 
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->integer('voice_id')->unsigned();
+            $table->foreign('voice_id')->references('id')->on('voices');
         });
     }
 
