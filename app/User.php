@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function voices()
+    {
+        return $this->hasMany('App\Voice');
+    }
+
+    public function pronunciations()
+    {
+        return $this->hasMany('App\Pronunciation');
+    }
 }

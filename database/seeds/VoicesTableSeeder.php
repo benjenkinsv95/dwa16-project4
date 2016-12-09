@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use App\Voice;
 use Illuminate\Database\Seeder;
 
@@ -19,7 +20,7 @@ class VoicesTableSeeder extends Seeder
         ];
 
         $existingVoices = Voice::all()->keyBy('name')->toArray();
-        $user_id = Author::where('email','=','benjenkinsv95@gmail.com')->pluck('id')->first();
+        $user_id = User::where('email','=','benjenkinsv95@gmail.com')->pluck('id')->first();
 
         foreach($voices as $voice) {
 
