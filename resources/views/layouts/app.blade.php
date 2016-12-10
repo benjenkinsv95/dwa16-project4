@@ -14,6 +14,12 @@
 </head>
 <body>
 
+@if(Session::get('flash_message') != null)
+    <div class="alert alert-dismissible alert-info">
+        {{ Session::get('flash_message') }}
+    </div>
+@endif
+
 <div class="wrapper">
     <nav class="navbar navbar-default">
         <div class="container">

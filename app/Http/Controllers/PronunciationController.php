@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pronunciation;
 use Illuminate\Http\Request;
 
 class PronunciationController extends Controller
@@ -11,9 +12,13 @@ class PronunciationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('pronunciations.index');
+        $pronunciations = Pronunciation::all();
+
+        return view('pronunciations.index')->with([
+            'pronunciations' => $pronunciations
+        ]);
     }
 
     /**
