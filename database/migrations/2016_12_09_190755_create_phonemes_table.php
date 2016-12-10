@@ -19,8 +19,8 @@ class CreatePhonemesTable extends Migration
             $table->timestamps();
 
             $table->string('sound');
-            $table->integer('stress_level')->unsigned();
-            $table->integer('order')->unsigned();
+            $table->integer('stress_level');
+            $table->integer('order');
 
             $table->integer('pronunciation_id')->unsigned();
             $table->foreign('pronunciation_id')->references('id')->on('pronunciations');
