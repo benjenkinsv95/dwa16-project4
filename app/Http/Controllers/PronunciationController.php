@@ -13,7 +13,7 @@ class PronunciationController extends Controller
      */
     public function index()
     {
-        return 'listing of pronunciations';
+        return view('pronunciations.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PronunciationController extends Controller
      */
     public function create()
     {
-        return 'Show form to add pronunciation';
+        return view('pronunciations.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class PronunciationController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Process form to add pronunciation';
+        return view('pronunciations.store');
     }
 
     /**
@@ -45,7 +45,7 @@ class PronunciationController extends Controller
      */
     public function show($id)
     {
-        return 'Show an individual pronunciation';
+        return view('pronunciations.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class PronunciationController extends Controller
      */
     public function edit($id)
     {
-        return 'Show form to edit pronunciation';
+        return view('pronunciations.edit');
     }
 
     /**
@@ -68,7 +68,7 @@ class PronunciationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'Process form to edit pronunciation';
+        return view('pronunciations.update');
     }
 
     /**
@@ -79,6 +79,6 @@ class PronunciationController extends Controller
      */
     public function destroy($id)
     {
-        return 'Process form to delete pronunciation';
+        return view('pronunciations.destroy');
     }
 }

@@ -13,7 +13,7 @@ class VoiceController extends Controller
      */
     public function index()
     {
-        return 'Listing of voices';
+        return view('voices.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class VoiceController extends Controller
      */
     public function create()
     {
-        return 'Show form to add a voice';
+        return view('voices.create');
     }
 
     /**
@@ -34,7 +34,7 @@ class VoiceController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Process form to add voice';
+        return view('voices.store');
     }
 
     /**
@@ -45,7 +45,7 @@ class VoiceController extends Controller
      */
     public function show($id)
     {
-        return 'Show an individual voice';
+        return view('voices.show');
     }
 
     /**
@@ -56,7 +56,7 @@ class VoiceController extends Controller
      */
     public function edit($id)
     {
-        return 'Show form to edit voice';
+        return view('voices.edit');
     }
 
     /**
@@ -68,6 +68,6 @@ class VoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'Process form to edit voice';
+        return view('voices.update');
     }
 }

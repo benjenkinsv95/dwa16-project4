@@ -3,10 +3,6 @@
 @section('title', 'Text-to-Phonetics Engine')
 @section('description', 'Create better pronunciations easier.')
 
-@section('header')
-
-@endsection
-
 @section('content')
     <h2>TODO(ben): Welcome</h2>
     <p>TODO(ben): Application description. Continually whiteboard just in time testing procedures through leveraged products. Globally integrate cutting-edge processes and alternative testing procedures. Monotonectally deploy parallel scenarios through functional niche markets.</p>
