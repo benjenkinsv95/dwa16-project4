@@ -15,4 +15,16 @@ class Voice extends Model
     {
         return $this->hasMany('App\Pronunciation');
     }
+
+    public static function getForDropdown() {
+        $voices = Voice::orderBy('language', 'name')->get();
+        $voices_for_dropdown = [];
+
+        foreach($voices as $voice) {
+            $voices_for_dropdown[$voice->id] = $voice->name.' - '
+                .$voice->language;
+        }
+
+        return $voices_for_dropdown;
+    }
 }

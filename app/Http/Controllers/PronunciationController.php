@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pronunciation;
+use App\Voice;
 use Illuminate\Http\Request;
 
 class PronunciationController extends Controller
@@ -14,7 +15,7 @@ class PronunciationController extends Controller
      */
     public function index(Request $request)
     {
-        $pronunciations = Pronunciation::all();
+        $pronunciations = Pronunciation::all()->sortBy('word');
 
         return view('pronunciations.index')->with([
             'pronunciations' => $pronunciations
@@ -28,7 +29,11 @@ class PronunciationController extends Controller
      */
     public function create()
     {
-        return view('pronunciations.create');
+        $voices_for_dropdown = Voice::getForDropdown();
+        
+        return view('pronunciations.create')->with([
+            'voices_for_dropdown' => $voices_for_dropdown
+        ]);
     }
 
     /**
@@ -50,7 +55,16 @@ class PronunciationController extends Controller
      */
     public function show($id)
     {
-        return view('pronunciations.show');
+        $pronunciation = Pronunciation::find($id);
+
+        if(is_null($pronunciation)) {
+            Session::flash('message','Book not found');
+            return redirect('/books');
+        }
+
+        return view('pronunciations.show')->with([
+            'pronunciation' => $pronunciation,
+        ]);
     }
 
     /**

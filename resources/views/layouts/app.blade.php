@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') - Ben Jenkins</title>
+    <title>@yield('title') - Text-to-Phonetics Engine</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/libs/font-awesome-4.6.3/css/font-awesome.min.css"
           rel="stylesheet">
@@ -80,6 +80,7 @@
         <div class="row page-info">
             <h1>@yield('title')</h1>
             <h3>@yield('description')</h3>
+            @yield('breadcrumbs')
         </div>
         @yield('content')
     </div>
