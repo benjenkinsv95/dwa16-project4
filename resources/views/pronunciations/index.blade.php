@@ -2,6 +2,13 @@
 
 @section('title', 'Pronunciations')
 
+@section('breadcrumbs')
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li class="active">Pronunciations</li>
+    </ul>
+@endsection
+
 @section('content')
     @if(count($pronunciations) == 0)
         You have not added any pronunciations, you can <a href='/pronunciations/create'>add a pronunciation now to get started</a>.
@@ -23,13 +30,22 @@
                 <tbody>
                 @foreach($pronunciations as $pronunciation)
                      <tr>
+
+
                         <td>{{ $pronunciation->word }}</td>
                         <td>{{ $pronunciation->getAcapelaTag() }}</td>
-                        <td><a href='/voices/{{ $pronunciation->voice->id }}'>{{ $pronunciation->voice->name }}</a></td>
+                        <td><a class='btn btn-link' href='/voices/{{
+                        $pronunciation->voice->id }}'>{{ $pronunciation->voice->name }}</a></td>
                         <td>{{ $pronunciation->user->name }}</td>
-                        <td><a class='button' href='/pronunciations/{{ $pronunciation->id }}'><i class='fa fa-eye'></i> View</a></td>
-                         <td><a class='button' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
-                         <td><a class='button' href='/pronunciations/{{ $pronunciation->id }}/delete'><i class='fa fa-trash'></i> Delete</a></td>
+                        <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}'><i class='fa fa-eye'></i> View</a></td>
+                         <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
+                        <td>
+                            <form method='POST' action='/pronunciations/{{ $pronunciation->id }}'>
+                                {{ csrf_field() }}
+                                <button class='btn btn-link' type="submit">
+                                    <i class='fa fa-trash'></i> Delete</button>
+                            </form>
+                        </td>
                      </tr>
                 @endforeach
                 </tbody>

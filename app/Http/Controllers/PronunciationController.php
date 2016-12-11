@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pronunciation;
 use App\Voice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PronunciationController extends Controller
 {
@@ -58,8 +59,8 @@ class PronunciationController extends Controller
         $pronunciation = Pronunciation::find($id);
 
         if(is_null($pronunciation)) {
-            Session::flash('message','Book not found');
-            return redirect('/books');
+            Session::flash('message','Pronunciation not found');
+            return redirect('/pronunciations');
         }
 
         return view('pronunciations.show')->with([
@@ -96,8 +97,30 @@ class PronunciationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    /**
+     * POST
+     */
     public function destroy($id)
     {
-        return view('pronunciations.destroy');
+        $pronunciation = Pronunciation::find($id);
+
+        if(is_null($pronunciation)) {
+            Session::flash('message','Pronunciation not found.');
+            return redirect('/pronunciations');
+        }
+
+        # Delete phonemes
+//        $phonemes = $pronunciation->phonemes();
+//        if($phonemes) {
+//
+//            foreach($phonemes as $phoneme){
+//                $phoneme->delete();
+//            }
+//        }
+
+        $pronunciation->delete();
+
+        Session::flash('flash_message', $pronunciation->word . ' was deleted.');
+        return redirect('/pronunciations');
     }
 }

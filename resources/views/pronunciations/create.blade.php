@@ -2,8 +2,16 @@
 
 @section('title', 'Add a new pronunciation')
 
+@section('breadcrumbs')
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/pronunciations">Pronunciations</a></li>
+        <li class="active">Create</li>
+    </ul>
+@endsection
+
 @section('content')
-    <form method='POST' action='/pronunciations'>
+    <form method='POST' action='/pronunciations/create'>
 
         {{ csrf_field() }}
 

@@ -11,39 +11,49 @@
 |
 */
 
-
 Route::get('/home', 'HomeController@index');
 Route::get('/', 'HomeController@index');
 
-Route::get('/pronunciations', 'PronunciationController@index')->name('pronunciations.index');
-Route::get('/pronunciations/create', 'PronunciationController@create')->name('pronunciations.create');
-Route::post('/pronunciations/create', 'PronunciationController@store')->name('pronunciations.store');
-Route::get('/pronunciations/{pronunciation}', 'PronunciationController@show')->name('pronunciations.show');
-Route::get('/pronunciations/{pronunciation}/edit', 'PronunciationController@edit')->name('pronunciations.edit');
-Route::post('/pronunciations/{pronunciation}/edit', 'PronunciationController@update')->name('pronunciations.update');
-Route::post('/pronunciations/{pronunciation}', 'PronunciationController@destroy')->name('pronunciations.destroy');
+Route::get('/pronunciations', 'PronunciationController@index')
+    ->name('pronunciations.index');
+Route::get('/pronunciations/create', 'PronunciationController@create')
+    ->name('pronunciations.create');
+Route::post('/pronunciations/create', 'PronunciationController@store')
+    ->name('pronunciations.store');
+Route::get('/pronunciations/{pronunciation}', 'PronunciationController@show')
+    ->name('pronunciations.show');
+Route::get('/pronunciations/{pronunciation}/edit',
+    'PronunciationController@edit')->name('pronunciations.edit');
+Route::post('/pronunciations/{pronunciation}/edit',
+    'PronunciationController@update')->name('pronunciations.update');
+Route::post('/pronunciations/{pronunciation}',
+    'PronunciationController@destroy')->name('pronunciations.destroy');
 
 Route::get('/voices', 'VoiceController@index')->name('voices.index');
 Route::get('/voices/create', 'VoiceController@create')->name('voices.create');
 Route::post('/voices/create', 'VoiceController@store')->name('voices.store');
 Route::get('/voices/{voice}', 'VoiceController@show')->name('voices.show');
 Route::get('/voices/{voice}/edit', 'VoiceController@edit')->name('voices.edit');
-Route::post('/voices/{voice}/edit', 'VoiceController@update')->name('voices.update');
+Route::post('/voices/{voice}/edit', 'VoiceController@update')
+    ->name('voices.update');
 
 Auth::routes();
-Route::get('/logout','Auth\LoginController@logout')->name('logout');
-
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 // TODO(ben): Delete temporary route
-Route::get('/debug', function() {
+Route::get('/debug', function () {
 
     echo '<pre>';
 
     echo '<h1>Environment</h1>';
-    echo App::environment().'</h1>';
+    echo App::environment() . '</h1>';
 
     echo '<h1>Debugging?</h1>';
-    if(config('app.debug')) echo "Yes"; else echo "No";
+    if (config('app.debug')) {
+        echo "Yes";
+    } else {
+        echo "No";
+    }
 
     echo '<h1>Database Config</h1>';
     /*
@@ -61,8 +71,7 @@ Route::get('/debug', function() {
         echo '<strong style="background-color:green; padding:5px;">Connection confirmed</strong>';
         echo "<br><br>Your Databases:<br><br>";
         print_r($results);
-    }
-    catch (Exception $e) {
+    } catch (Exception $e) {
         echo '<strong style="background-color:crimson; padding:5px;">Caught exception: ', $e->getMessage(), "</strong>\n";
     }
 
@@ -71,15 +80,24 @@ Route::get('/debug', function() {
 });
 
 // TODO(ben): Delete temporary route
-Route::get('/show-login-status', function() {
+Route::get('/show-login-status', function () {
 
     # You may access the authenticated user via the Auth facade
     $user = Auth::user();
 
-    if($user)
+    if ($user) {
         dump($user->toArray());
-    else
+    } else {
         dump('You are not logged in.');
+    }
 
     return;
 });
+
+if (App::environment('local')) {
+    Route::get('/drop', function () {
+        DB::statement('DROP database text_to_phonetics_engine');
+        DB::statement('CREATE database text_to_phonetics_engine');
+        return 'Dropped text_to_phonetics_engine; created text_to_phonetics_engine.';
+    });
+};

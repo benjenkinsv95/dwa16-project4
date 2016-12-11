@@ -23,7 +23,7 @@ class CreatePhonemesTable extends Migration
             $table->integer('order');
 
             $table->integer('pronunciation_id')->unsigned();
-            $table->foreign('pronunciation_id')->references('id')->on('pronunciations');
+            $table->foreign('pronunciation_id')->references('id')->on('pronunciations')->onDelete('cascade');
         });
     }
 
