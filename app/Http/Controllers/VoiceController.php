@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreVoiceRequest;
+use App\Http\Requests\VoiceRequest;
+use App\Voice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class VoiceController extends Controller
 {
@@ -13,6 +17,11 @@ class VoiceController extends Controller
      */
     public function index()
     {
+        $voices = Voice::all()->sortBy('name');
+
+        return view('voices.index')->with([
+            'voices' => $voices
+        ]);
         return view('voices.index');
     }
 
@@ -32,9 +41,16 @@ class VoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VoiceRequest $request)
     {
-        return view('voices.store');
+        $voice = new Voice();
+        $voice->name = $request->input('name');
+        $voice->language = $request->input('language');
+        $voice->user_id = $request->user()->id;
+
+        $voice->save();
+        Session::flash('flash_message', 'The voice '.$voice->name.' was added.');
+        return redirect('/voices');
     }
 
     /**
@@ -45,7 +61,19 @@ class VoiceController extends Controller
      */
     public function show($id)
     {
-        return view('voices.show');
+        $voice = Voice::find($id);
+
+        if(is_null($voice)) {
+            Session::flash('message','Voice not found');
+            return redirect('/voices');
+        }
+
+        $pronunciations = $voice->pronunciations;
+
+        return view('voices.show')->with([
+            'voice' => $voice,
+            'pronunciations' => $pronunciations
+        ]);
     }
 
     /**
@@ -56,7 +84,12 @@ class VoiceController extends Controller
      */
     public function edit($id)
     {
-        return view('voices.edit');
+        $voice = Voice::find($id);
+        return view('voices.edit')->with(
+            [
+                'voice' => $voice
+            ]
+        );
     }
 
     /**
@@ -66,8 +99,14 @@ class VoiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(VoiceRequest $request, $id)
     {
-        return view('voices.update');
+        $voice = Voice::find($id);
+        $voice->name = $request->input('name');
+        $voice->language = $request->input('language');
+
+        $voice->save();
+        Session::flash('flash_message', 'The changes to voice '.$voice->name.' were saved.');
+        return redirect('/voices');
     }
 }

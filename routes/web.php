@@ -34,8 +34,7 @@ Route::get('/voices/create', 'VoiceController@create')->name('voices.create');
 Route::post('/voices/create', 'VoiceController@store')->name('voices.store');
 Route::get('/voices/{voice}', 'VoiceController@show')->name('voices.show');
 Route::get('/voices/{voice}/edit', 'VoiceController@edit')->name('voices.edit');
-Route::post('/voices/{voice}/edit', 'VoiceController@update')
-    ->name('voices.update');
+Route::put('/voices/{voice}/edit', 'VoiceController@update')->name('voices.update');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');

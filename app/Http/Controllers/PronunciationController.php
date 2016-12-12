@@ -109,15 +109,6 @@ class PronunciationController extends Controller
             return redirect('/pronunciations');
         }
 
-        # Delete phonemes
-//        $phonemes = $pronunciation->phonemes();
-//        if($phonemes) {
-//
-//            foreach($phonemes as $phoneme){
-//                $phoneme->delete();
-//            }
-//        }
-
         $pronunciation->delete();
 
         Session::flash('flash_message', $pronunciation->word . ' was deleted.');

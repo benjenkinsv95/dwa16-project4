@@ -25,7 +25,7 @@ class CreatePronunciationsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->integer('voice_id')->unsigned();
-            $table->foreign('voice_id')->references('id')->on('voices');
+            $table->foreign('voice_id')->references('id')->on('voices')->onDelete('cascade');
         });
     }
 

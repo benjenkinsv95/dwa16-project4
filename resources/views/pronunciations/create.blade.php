@@ -38,6 +38,24 @@
         </div>
 
         {{--TODO Add phonemes--}}
+        {{--<table class="tags table table-striped table-hover ">--}}
+        {{--<thead>--}}
+        {{--<tr>--}}
+        {{--<th>#</th>--}}
+        {{--<th>Phoneme</th>--}}
+        {{--<th>Stress</th>--}}
+        {{--</tr>--}}
+        {{--</thead>--}}
+        {{--<tbody>--}}
+        {{--@foreach($pronunciation->phonemes as $phoneme)--}}
+        {{--<tr>--}}
+        {{--<td>{{ $phoneme->order }}</td>--}}
+        {{--<td>{{ $phoneme->sound }}</td>--}}
+        {{--<td>{{ $phoneme->stress_level }}</td>--}}
+        {{--</tr>--}}
+        {{--@endforeach--}}
+        {{--</tbody>--}}
+        {{--</table>--}}
 
 
         <div class='form-instructions'>
