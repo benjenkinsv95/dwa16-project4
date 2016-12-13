@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PronunciationRequest;
+use App\Phoneme;
 use App\Pronunciation;
 use App\Voice;
 use Illuminate\Http\Request;
@@ -43,9 +45,39 @@ class PronunciationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PronunciationRequest $request)
     {
-        return view('pronunciations.store');
+        $pronunciation = new Pronunciation();
+        $pronunciation->voice_id = $request->voice_id;
+        $pronunciation->word = $request->input('word');
+        $pronunciation->user_id = $request->user()->id;
+        $pronunciation->save();
+
+        $phonemeStrings = preg_split('/\s+/', $request->input('phonemes'));
+        $count = count($phonemeStrings);
+
+        for($order = 0; $order < $count; $order++){
+            $phoneme = new Phoneme();
+            $phoneme->order = $order;
+
+            $lastChar = substr($phonemeStrings[$order], -1, 1);
+
+            if(is_numeric($lastChar)){
+                $stress_level = $lastChar;
+                $sound = substr($phonemeStrings[$order], 0, count($phonemeStrings[$order] - 1));
+            }else{
+                $stress_level = 0;
+                $sound = $phonemeStrings[$order];
+            }
+
+            $phoneme->stress_level = $stress_level;
+            $phoneme->sound = $sound;
+            $phoneme->pronunciation_id = $pronunciation->id;
+            $phoneme->save();
+        }
+
+        Session::flash('flash_message', 'Your pronunciation ' . $pronunciation->word . ' is ' . $pronunciation->getAcapelaTag() . ' was added.');
+        return redirect('/pronunciations');
     }
 
     /**
@@ -76,7 +108,13 @@ class PronunciationController extends Controller
      */
     public function edit($id)
     {
-        return view('pronunciations.edit');
+        $voices_for_dropdown = Voice::getForDropdown();
+        $pronunciation = Pronunciation::find($id);
+
+        return view('pronunciations.edit')->with([
+            'pronunciation' => $pronunciation,
+            'voices_for_dropdown' => $voices_for_dropdown
+        ]);
     }
 
     /**
@@ -86,9 +124,46 @@ class PronunciationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PronunciationRequest $request, $id)
     {
-        return view('pronunciations.update');
+        $pronunciation = Pronunciation::find($id);
+        $pronunciation->voice_id = $request->voice_id;
+        $pronunciation->word = $request->input('word');
+        $pronunciation->user_id = $request->user()->id;
+        $pronunciation->save();
+
+        # Delete existing phonemes
+        foreach($pronunciation->phonemes as $phoneme){
+            $phoneme->pronunciation_id = null;
+            $phoneme->delete();
+        }
+
+        # Add new phonemes
+        $phonemeStrings = preg_split('/\s+/', $request->input('phonemes'));
+        $count = count($phonemeStrings);
+
+        for($order = 0; $order < $count; $order++){
+            $phoneme = new Phoneme();
+            $phoneme->order = $order;
+
+            $lastChar = substr($phonemeStrings[$order], -1, 1);
+
+            if(is_numeric($lastChar)){
+                $stress_level = $lastChar;
+                $sound = substr($phonemeStrings[$order], 0, count($phonemeStrings[$order] - 1));
+            }else{
+                $stress_level = 0;
+                $sound = $phonemeStrings[$order];
+            }
+
+            $phoneme->stress_level = $stress_level;
+            $phoneme->sound = $sound;
+            $phoneme->pronunciation_id = $pronunciation->id;
+            $phoneme->save();
+        }
+
+        Session::flash('flash_message', 'Your pronunciation ' . $pronunciation->word . ' is ' . $pronunciation->getAcapelaTag() . ' was updated.');
+        return redirect('/pronunciations');
     }
 
     /**

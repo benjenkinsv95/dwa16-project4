@@ -16,17 +16,6 @@
         {{ csrf_field() }}
 
         <div class='form-group'>
-            <label>Word</label>
-            <input
-                    type='text'
-                    id='word'
-                    name='word'
-                    value='{{ old('word', 'Hello') }}'
-            >
-            <div class='error'>{{ $errors->first('word') }}</div>
-        </div>
-
-        <div class='form-group'>
             <label>Voice</label>
             <select name='voice_id'>
                 @foreach($voices_for_dropdown as $voice_id => $voice)
@@ -37,7 +26,31 @@
             </select>
         </div>
 
-        {{--TODO Add phonemes--}}
+        <div class='form-group'>
+            <label>Word</label>
+            <input
+                    type='text'
+                    id='word'
+                    name='word'
+                    value='{{ old('word', 'hello') }}'
+            >
+            <div class='error'>{{ $errors->first('word') }}</div>
+        </div>
+
+        <div class='form-group'>
+            <label>Phonemes</label>
+            <input
+                    type='text'
+                    id='phonemes'
+                    name='phonemes'
+                    value='{{ old('phonemes', 'h @ l @U') }}'
+            >
+            <div class='error'>{{ $errors->first('phonemes') }}</div>
+        </div>
+
+
+
+        {{--TODO Add phonemes builder if time--}}
         {{--<table class="tags table table-striped table-hover ">--}}
         {{--<thead>--}}
         {{--<tr>--}}

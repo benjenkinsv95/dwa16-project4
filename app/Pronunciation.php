@@ -22,23 +22,26 @@ class Pronunciation extends Model
     }
 
     public function getAcapelaTag(){
-        $tag = '\prn=';
+        return '\prn=' . $this->getPhonemesString() . '\\';
+    }
 
+    public function getPhonemesString()
+    {
         $phonemes = $this->phonemes()->getResults();
         $phonemesCount = count($phonemes);
+        $phonemesString = '';
 
-        for($i = 0; $i<$phonemesCount; $i++ ) {
+        for ($i = 0; $i < $phonemesCount; $i++) {
             $phoneme = $phonemes->get($i);
-            $tag .= $phoneme->sound;
-            if($phoneme->stress_level > 0){
-                $tag .= $phoneme->stress_level;
+            $phonemesString .= $phoneme->sound;
+            if ($phoneme->stress_level > 0) {
+                $phonemesString .= $phoneme->stress_level;
             }
-            if($i != $phonemesCount - 1){
-                $tag .= ' ';
+            if ($i != $phonemesCount - 1) {
+                $phonemesString .= ' ';
             }
         }
 
-        $tag .= '\\';
-        return $tag;
+        return $phonemesString;
     }
 }

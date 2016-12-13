@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\BuildableFormRequest;
 
-class StorePronunciation extends BuildableFormRequest
+class PronunciationRequest extends BuildableFormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,8 +15,9 @@ class StorePronunciation extends BuildableFormRequest
     public function rules()
     {
         return $this->getRuleBuilder()
-            ->add('title')->required()
-            ->add('comment')->required()
+            ->add('phonemes')->required()
+            ->add('word')->required()
+            ->add('voice_id')->required()
             ->get();
     }
 }

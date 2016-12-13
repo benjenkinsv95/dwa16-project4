@@ -47,8 +47,7 @@
             All fields are required
         </div>
 
-        <button type="submit" class="btn btn-primary">
-           Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
         <div class='error'>
             @if(count($errors) > 0)
