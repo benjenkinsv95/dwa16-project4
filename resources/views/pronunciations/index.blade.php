@@ -36,7 +36,7 @@
                         <td>{{ $pronunciation->getAcapelaTag() }}</td>
                         <td><a class='btn btn-link' href='/voices/{{
                         $pronunciation->voice->id }}'>{{ $pronunciation->voice->name }}</a></td>
-                        <td>{{ $pronunciation->user->name }}</td>
+                        <td><i class='fa fa-user'></i> {{ $pronunciation->user->name }}</td>
                         <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}'><i class='fa fa-eye'></i> View</a></td>
                          <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
                         <td>

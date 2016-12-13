@@ -25,31 +25,12 @@ body {
     padding-bottom: 30px;
 }
 
-
-
-.is-visible {
-    -webkit-animation: PopupItems 700ms ease-in forwards;
-    animation: PopupItems 700ms ease-in forwards;
+.user-icon{
+    font-size: 26px;
 }
 
-/* Learned from: https://www.youtube.com/watch?v=AWAnrQCYsVM */
-@keyframes PopupItems {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0.3) rotateY(90deg);
-        transform: scale(0.3) rotateY(90deg);
-    }
-    70% {
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.page-info {
-    margin-bottom: 40px
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }

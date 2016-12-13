@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title') - Text-to-Phonetics Engine</title>
     <link href="/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/libs/font-awesome-4.6.3/css/font-awesome.min.css"
+    <link href="/libs/font-awesome-4.7.0/css/font-awesome.min.css"
           rel="stylesheet">
     <link href="/images/favicon.png" rel="shortcut icon">
     <link href="/css/master.css" rel="stylesheet">
@@ -40,35 +40,32 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ url('/') }}">Home</a></li>
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Projects<span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="http://p1.ben-jenkins.com/">Portfolio</a></li>
-                            <li><a href="https://github.com/benjenkinsv95/dwa16-project1">Portfolio GitHub <i class="fa fa-github"
-                                                                                                              aria-hidden="true"></i></a></li>
-
-                            <li class="divider"></li>
-                            <li><a href="http://p2.ben-jenkins.com/">xkcd Password Generator</a></li>
-                            <li><a href="https://github.com/benjenkinsv95/dwa16-project2">xkcd Password Generator GitHub <i class="fa fa-github"
-                                                                                                                            aria-hidden="true"></i></a></li>
-
-                            <li class="divider"></li>
-                            <li><a href="http://p3.ben-jenkins.com/">Developer's Best Friend</a></li>
-                            <li><a href="https://github.com/benjenkinsv95/dwa16-project3">Developer's Best Friend GitHub <i class="fa fa-github"
-                                                                                                                            aria-hidden="true"></i></a></li>
-
-                            <li class="divider"></li>
-                            <li><a href="http://p4.ben-jenkins.com/">Text-to-Phonetics Engine</a></li>
-                            <li><a href="https://github.com/benjenkinsv95/dwa16-project4">Text-to-Phonetics Engine GitHub
-                                    <i class="fa fa-github" aria-hidden="true"></i></a></li>
-                        </ul>
-                    </li>
+                    <li><a href='/pronunciations'>Pronunciations</a></li>
+                    <li><a href='/voices'>Voices</a></li>
 
                     @if(Auth::check())
-                        <li><a href='/logout'>Log out</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="user-icon fa fa-user-circle"></i> {{Auth::user()->name}}
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href='/logout'>Log out</a></li>
+                            </ul>
+                        </li>
                     @else
-                        <li><a href='/login'>Log in</a></li>
-                        <li><a href='/register'>Register</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <i class="user-icon fa fa-user-circle"></i>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href='/login'>Log in</a></li>
+                                <li class="divider"></li>
+                                <li><a href='/register'>Register</a></li>
+                            </ul>
+                        </li>
                     @endif
                 </ul>
             </div>
