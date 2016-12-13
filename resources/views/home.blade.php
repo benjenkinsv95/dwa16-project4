@@ -16,7 +16,7 @@
             <br>
         </div>
         <div class="col-sm-4">
-            <a href="{{ URL::route('pronunciations.index') }}" class="btn
+            <a href="{{ URL::route('voices.index') }}" class="btn
             btn-primary btn-block">View Voices</a>
             <br>
         </div>
