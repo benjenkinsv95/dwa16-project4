@@ -22,7 +22,9 @@
                     name='name'
                     value='{{ old('name') }}'
             >
-            <div class='error'>{{ $errors->first('name') }}</div>
+            @if($errors->first('name'))
+                <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+            @endif
         </div>
 
         {{--TODO(ben): Dropdown of previously used languages would be nice--}}
@@ -34,7 +36,9 @@
                     name='language'
                     value='{{ old('language', 'English (USA)') }}'
             >
-            <div class='error'>{{ $errors->first('language') }}</div>
+            @if($errors->first('language'))
+                <div class="alert alert-danger">{{ $errors->first('language') }}</div>
+            @endif
         </div>
 
 

@@ -17,7 +17,7 @@ class PronunciationRequest extends BuildableFormRequest
         return $this->getRuleBuilder()
             ->add('phonemes')->required()
             ->add('word')->required()
-            ->add('voice_id')->required()
+            ->add('voice_id')->required()->numeric()->min(1)
             ->get();
     }
 }

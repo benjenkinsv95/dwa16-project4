@@ -12,6 +12,12 @@
 ## Demo URL [TODO]
 
 
+## CRUD Operations
+* Create: http://p4.ben-jenkins.com/pronunciations/create
+* Read: http://p4.ben-jenkins.com/pronunciations/1
+* Update: http://p4.ben-jenkins.com/pronunciations/1/edit
+* Delete: http://p4.ben-jenkins.com/pronunciations (Click any of the delete buttons here)
+
 ## Details for teaching team [TODO]
 My GitHub project has an *.idea* folder and a *p4.iml* file committed. These are configuration files for the IDE I use, IntelliJ IDEA, and are not outside code.
 

@@ -24,6 +24,9 @@
                     >{{ $voice }}</option>
                 @endforeach
             </select>
+            @if($errors->first('voice_id'))
+                <div class="alert alert-danger">{{ $errors->first('voice_id') }}</div>
+            @endif
         </div>
 
         <div class='form-group'>
@@ -34,7 +37,9 @@
                     name='word'
                     value='{{ old('word', 'hello') }}'
             >
-            <div class='error'>{{ $errors->first('word') }}</div>
+            @if($errors->first('word'))
+                <div class="alert alert-danger">{{ $errors->first('word') }}</div>
+            @endif
         </div>
 
         <div class='form-group'>
@@ -45,7 +50,9 @@
                     name='phonemes'
                     value='{{ old('phonemes', 'h @ l @U') }}'
             >
-            <div class='error'>{{ $errors->first('phonemes') }}</div>
+            @if($errors->first('phonemes'))
+                <div class="alert alert-danger">{{ $errors->first('phonemes') }}</div>
+            @endif
         </div>
 
 
