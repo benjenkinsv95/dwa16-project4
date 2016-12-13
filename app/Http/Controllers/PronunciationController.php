@@ -18,7 +18,7 @@ class PronunciationController extends Controller
      */
     public function index(Request $request)
     {
-        $pronunciations = Pronunciation::all()->sortBy('word');
+        $pronunciations = Pronunciation::with('user', 'voice', 'phonemes')->orderBy('word')->get();
 
         return view('pronunciations.index')->with([
             'pronunciations' => $pronunciations
@@ -88,7 +88,7 @@ class PronunciationController extends Controller
      */
     public function show($id)
     {
-        $pronunciation = Pronunciation::find($id);
+        $pronunciation = Pronunciation::with('user', 'voice', 'phonemes')->find($id);
 
         if(is_null($pronunciation)) {
             Session::flash('message','Pronunciation not found');
@@ -109,7 +109,7 @@ class PronunciationController extends Controller
     public function edit($id)
     {
         $voices_for_dropdown = Voice::getForDropdown();
-        $pronunciation = Pronunciation::find($id);
+        $pronunciation = Pronunciation::with('user', 'voice', 'phonemes')->find($id);
 
         return view('pronunciations.edit')->with([
             'pronunciation' => $pronunciation,
@@ -126,7 +126,7 @@ class PronunciationController extends Controller
      */
     public function update(PronunciationRequest $request, $id)
     {
-        $pronunciation = Pronunciation::find($id);
+        $pronunciation = Pronunciation::with('user', 'voice', 'phonemes')->find($id);
         $pronunciation->voice_id = $request->voice_id;
         $pronunciation->word = $request->input('word');
         $pronunciation->user_id = $request->user()->id;
@@ -177,7 +177,7 @@ class PronunciationController extends Controller
      */
     public function destroy($id)
     {
-        $pronunciation = Pronunciation::find($id);
+        $pronunciation = Pronunciation::with('user', 'voice', 'phonemes')->find($id);
 
         if(is_null($pronunciation)) {
             Session::flash('message','Pronunciation not found.');

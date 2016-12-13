@@ -27,12 +27,11 @@ class Pronunciation extends Model
 
     public function getPhonemesString()
     {
-        $phonemes = $this->phonemes()->getResults();
-        $phonemesCount = count($phonemes);
+        $phonemesCount = count($this->phonemes);
         $phonemesString = '';
 
         for ($i = 0; $i < $phonemesCount; $i++) {
-            $phoneme = $phonemes->get($i);
+            $phoneme = $this->phonemes->get($i);
             $phonemesString .= $phoneme->sound;
             if ($phoneme->stress_level > 0) {
                 $phonemesString .= $phoneme->stress_level;

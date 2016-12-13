@@ -78,8 +78,12 @@
 
     <div class="page-content container">
         <div class="row page-info">
-            <h1>@yield('title')</h1>
-            <h3>@yield('description')</h3>
+            @hasSection('title')
+                <h1>@yield('title')</h1>
+            @endif
+            @hasSection('description')
+                <h3>@yield('description')</h3>
+            @endif
             @yield('breadcrumbs')
         </div>
         @yield('content')
