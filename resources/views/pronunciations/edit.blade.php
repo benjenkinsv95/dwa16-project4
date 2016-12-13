@@ -8,7 +8,7 @@
     <ul class="breadcrumb">
         <li><a href="/">Home</a></li>
         <li><a href="/pronunciations">Pronunciations</a></li>
-        <li class="active">Edit</li>
+        <li class="active">{{ $pronunciation->word }}</li>
     </ul>
 @endsection
 
