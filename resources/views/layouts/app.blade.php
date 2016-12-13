@@ -42,6 +42,7 @@
 
                     <li><a href='/pronunciations'>Pronunciations</a></li>
                     <li><a href='/voices'>Voices</a></li>
+                    <li><a href='https://acapela-box.com/AcaBox/index.php' target='_blank'>Speech Demo</a></li>
 
                     @if(Auth::check())
 

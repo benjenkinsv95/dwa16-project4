@@ -31,7 +31,7 @@
                         <td><a class='btn btn-link' href='/voices/{{
                         $voice->id }}'>{{ $voice->name }}</a></td>
                         <td>{{ $voice->language }}</td>
-                        <td>{{ $voice->user->name }}</td>
+                        <td><i class='fa fa-user'></i> {{ $voice->user->name }}</td>
                         <td><a class='btn btn-link' href='/voices/{{ $voice->id }}'><i class='fa fa-eye'></i> View</a></td>
                         <td><a class='btn btn-link' href='/voices/{{ $voice->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
                     </tr>
