@@ -87,7 +87,6 @@ class VoicesTableSeeder extends Seeder
             array("Language"=>"French (Canada)","Name"=>"Louise","Gender"=>"F"),
             array("Language"=>"French (France)","Name"=>"Alice","Gender"=>"F"),
             array("Language"=>"French (France)","Name"=>"Anais","Gender"=>"F"),
-            array("Language"=>"French (France)","Name"=>"Anais 22 kHz)","Gender"=>"F"),
             array("Language"=>"French (France)","Name"=>"Antoine","Gender"=>"M"),
             array("Language"=>"French (France)","Name"=>"AntoineFromAfar","Gender"=>"M"),
             array("Language"=>"French (France)","Name"=>"AntoineHappy","Gender"=>"M"),
