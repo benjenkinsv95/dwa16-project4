@@ -143,12 +143,6 @@ class VoicesTableSeeder extends Seeder
             array("Language"=>"Turkish","Name"=>"Ipek","Gender"=>"F")
         );
 
-//        $voices = [
-//            ['Josh (Child)','English (USA)'],
-//            ['Will (FromAfar)','English (USA)'],
-//            ['Graham','English (UK)']
-//        ];
-
         $existingVoices = Voice::all()->keyBy('name')->toArray();
         $user_id = User::where('email','=','benjenkinsv95@gmail.com')->pluck('id')->first();
 
@@ -156,10 +150,6 @@ class VoicesTableSeeder extends Seeder
 
             if(!array_key_exists($voice["Name"],$existingVoices)) {
                 $voice = Voice::create([
-//                    'name' => $voice[0],
-//                    'language' => $voice[1],
-//                    'user_id' => $user_id,
-
                     'name' => $voice["Name"],
                     'language' => $voice["Language"],
                     'user_id' => $user_id,

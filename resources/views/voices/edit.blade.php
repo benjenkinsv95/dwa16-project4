@@ -13,52 +13,65 @@
 @endsection
 
 @section('content')
-    <form method='POST' action='/voices/{{ $voice->id }}/edit'>
+    <form class="col-xs-12 col-md-8" method='POST' action='/voices/{{ $voice->id }}/edit'>
 
         {{ method_field('PUT') }}
 
         {{ csrf_field() }}
 
-        <div class='form-group'>
-            <label>Name</label>
-            <input
-                    type='text'
-                    id='name'
-                    name='name'
-                    value='{{ old('name', $voice->name) }}'
-            >
-            @if($errors->first('name'))
-                <div class="alert alert-danger">{{ $errors->first('name') }}</div>
-            @endif
-        </div>
+        <fieldset>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <label class="control-label">Name</label>
+                        <input
+                                class="form-control"
+                                type='text'
+                                id='name'
+                                name='name'
+                                value='{{ old('name', $voice->name) }}'
+                        >
+                        @if($errors->first('name'))
+                            <div class="alert alert-danger">{{ $errors->first('name') }}</div>
+                        @endif
+                    </div>
+                </div>
 
-        <div class='form-group'>
-            <label>Language</label>
-            <select name='language'>
-                @foreach($languages_for_dropdown as $language)
-                    <option
-                            {{ ($language == $voice->language) ? 'SELECTED' : '' }}
-                            value='{{ $language }}'
-                    >{{ $language }}</option>
-                @endforeach
-            </select>
-            @if($errors->first('language'))
-                <div class="alert alert-danger">{{ $errors->first('language') }}</div>
-            @endif
-        </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <label class="control-label">Language</label>
+                        <select class="form-control" name='language'>
+                            @foreach($languages_for_dropdown as $language)
+                                <option
+                                        {{ ($language == $voice->language) ? 'SELECTED' : '' }}
+                                        value='{{ $language }}'
+                                >{{ $language }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->first('language'))
+                            <div class="alert alert-danger">{{ $errors->first('language') }}</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class='form-instructions'>
+                All fields are required
+            </div>
+
+            <div class="col-xs-12 col-sm-6">
+                <div class='form-group'>
+                    <button type="submit" class="form-control btn btn-primary btn-block">Submit</button>
+                </div>
+            </div>
 
 
-        <div class='form-instructions'>
-            All fields are required
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-        <div class='error'>
-            @if(count($errors) > 0)
-                Correct errors before submitting.
-            @endif
-        </div>
+            <div class='error'>
+                @if(count($errors) > 0)
+                    Correct errors before submitting.
+                @endif
+            </div>
+        </fieldset>
 
     </form>
 @endsection

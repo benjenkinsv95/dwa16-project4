@@ -23,12 +23,24 @@
     {{$pronunciation->user->name }}
 
     <br>
-    <a class='button' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a>
-    <form method='POST' action='/pronunciations/{{ $pronunciation->id }}'>
-        {{ csrf_field() }}
-        <button class='btn btn-link' type="submit">
-            <i class='fa fa-trash'></i> Delete</button>
-    </form>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <a href='/pronunciations/{{ $pronunciation->id }}/edit' class="btn
+            btn-primary btn-block"><i class='fa fa-pencil'></i> Edit</a>
+            <br>
+        </div>
+        <div class="col-sm-4">
+            <form method='POST' action='/pronunciations/{{ $pronunciation->id }}'>
+                {{ csrf_field() }}
+                <button class="btn btn-default btn-block" type="submit">
+                    <i class='fa fa-trash'></i> Delete</button>
+            </form>
+            <br>
+        </div>
+    </div>
+
+
 
 
 @endsection

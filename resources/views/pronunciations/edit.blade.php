@@ -13,88 +13,84 @@
 @endsection
 
 @section('content')
-    <form method='POST' action='/pronunciations/{{ $pronunciation->id }}/edit'>
+    <form class="col-xs-12 col-md-8" method='POST' action='/pronunciations/{{ $pronunciation->id }}/edit'>
 
         {{ method_field('PUT') }}
 
         {{ csrf_field() }}
+        <fieldset>
+            <div class="row">
 
-        <div class='form-group'>
-            <label>Voice</label>
-            <select name='voice_id'>
-                @foreach($voices_for_dropdown as $voice_id => $voice)
-                    <option
-                            {{ ($voice_id == $pronunciation->voice->id) ? 'SELECTED' : '' }}
-                            value='{{ $voice_id }}'
-                    >{{ $voice }}</option>
-                @endforeach
-            </select>
-            @if($errors->first('voice_id'))
-                <div class="alert alert-danger">{{ $errors->first('voice_id') }}</div>
-            @endif
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <label class="control-label">Voice</label>
+                        <select class="form-control" name='voice_id'>
+                            @foreach($voices_for_dropdown as $voice_id => $voice)
+                                <option
+                                        {{ ($voice_id == $pronunciation->voice->id) ? 'SELECTED' : '' }}
+                                        value='{{ $voice_id }}'
+                                >{{ $voice }}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->first('voice_id'))
+                            <div class="alert alert-danger">{{ $errors->first('voice_id') }}</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
 
-        </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <label class="control-label">Word</label>
+                        <input
+                                class="form-control"
+                                type='text'
+                                id='word'
+                                name='word'
+                                value='{{ old('word', $pronunciation->word) }}'
+                        >
+                        @if($errors->first('word'))
+                            <div class="alert alert-danger">{{ $errors->first('word') }}</div>
+                        @endif
+                    </div>
+                </div>
 
-        <div class='form-group'>
-            <label>Word</label>
-            <input
-                    type='text'
-                    id='word'
-                    name='word'
-                    value='{{ old('word', $pronunciation->word) }}'
-            >
-            @if($errors->first('word'))
-                <div class="alert alert-danger">{{ $errors->first('word') }}</div>
-            @endif
-        </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <label class="control-label">Phonemes</label>
+                        <input
+                                class="form-control"
+                                type='text'
+                                id='phonemes'
+                                name='phonemes'
+                                value='{{ old('phonemes', $pronunciation->getPhonemesString()) }}'
+                        >
+                        @if($errors->first('phonemes'))
+                            <div class="alert alert-danger">{{ $errors->first('phonemes') }}</div>
+                        @endif
+                    </div>
+                </div>
+            </div>
 
-        <div class='form-group'>
-            <label>Phonemes</label>
-            <input
-                    type='text'
-                    id='phonemes'
-                    name='phonemes'
-                    value='{{ old('phonemes', $pronunciation->getPhonemesString()) }}'
-            >
-            @if($errors->first('phonemes'))
-                <div class="alert alert-danger">{{ $errors->first('phonemes') }}</div>
-            @endif
-        </div>
+            <div class='form-instructions'>
+                All fields are required
+                <br>
+                <br>
+            </div>
 
+            <div class="col-xs-12 col-sm-6">
+                <div class='form-group'>
+                    <button type="submit" class="form-control btn btn-primary btn-block">Edit pronunciation</button>
+                </div>
+            </div>
 
-
-        {{--TODO Add phonemes builder if time--}}
-        {{--<table class="tags table table-striped table-hover ">--}}
-        {{--<thead>--}}
-        {{--<tr>--}}
-        {{--<th>#</th>--}}
-        {{--<th>Phoneme</th>--}}
-        {{--<th>Stress</th>--}}
-        {{--</tr>--}}
-        {{--</thead>--}}
-        {{--<tbody>--}}
-        {{--@foreach($pronunciation->phonemes as $phoneme)--}}
-        {{--<tr>--}}
-        {{--<td>{{ $phoneme->order }}</td>--}}
-        {{--<td>{{ $phoneme->sound }}</td>--}}
-        {{--<td>{{ $phoneme->stress_level }}</td>--}}
-        {{--</tr>--}}
-        {{--@endforeach--}}
-        {{--</tbody>--}}
-        {{--</table>--}}
-
-
-        <div class='form-instructions'>
-            All fields are required
-        </div>
-
-        <button type="submit" class="btn btn-primary">Edit pronunciation</button>
-
-        <div class='error'>
-            @if(count($errors) > 0)
-                Correct errors before submitting.
-            @endif
-        </div>
+            <div class='error'>
+                @if(count($errors) > 0)
+                    Correct errors before submitting.
+                @endif
+            </div>
+        </fieldset>
 
     </form>
 @endsection
