@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Voice extends Model
 {
@@ -26,5 +27,10 @@ class Voice extends Model
         }
 
         return $voices_for_dropdown;
+    }
+
+    public static function getLanguagesForDropdown() {
+        $languages = Voice::all()->pluck('language');
+        return array_unique($languages->toArray());
     }
 }

@@ -27,15 +27,16 @@
             @endif
         </div>
 
-        {{--TODO(ben): Dropdown of previously used languages would be nice--}}
         <div class='form-group'>
             <label>Language</label>
-            <input
-                    type='text'
-                    id='language'
-                    name='language'
-                    value='{{ old('language', 'English (USA)') }}'
-            >
+            <select name='language'>
+                @foreach($languages_for_dropdown as $language)
+                    <option
+                            {{ ($language === "English (USA)") ? 'SELECTED' : '' }}
+                            value='{{ $language }}'
+                    >{{ $language }}</option>
+                @endforeach
+            </select>
             @if($errors->first('language'))
                 <div class="alert alert-danger">{{ $errors->first('language') }}</div>
             @endif

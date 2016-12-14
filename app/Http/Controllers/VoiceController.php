@@ -32,7 +32,13 @@ class VoiceController extends Controller
      */
     public function create()
     {
-        return view('voices.create');
+        $languages_for_dropdown = Voice::getLanguagesForDropdown();
+
+        return view('voices.create')->with(
+            [
+                'languages_for_dropdown' => $languages_for_dropdown
+            ]
+        );
     }
 
     /**
@@ -85,9 +91,12 @@ class VoiceController extends Controller
     public function edit($id)
     {
         $voice = Voice::find($id);
+        $languages_for_dropdown = Voice::getLanguagesForDropdown();
+
         return view('voices.edit')->with(
             [
-                'voice' => $voice
+                'voice' => $voice,
+                'languages_for_dropdown' => $languages_for_dropdown
             ]
         );
     }
