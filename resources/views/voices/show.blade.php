@@ -13,12 +13,12 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row container">
         <h2>Language</h2>
         <p>{{ $voice->language }}</p>
     </div>
 
-    <div class="row">
+    <div class="row container">
         @if(count($pronunciations) == 0)
             <p>You have not added any pronunciations, you can add a pronunciation now to get started.</p>
             <div class="pull-right">

@@ -25,12 +25,12 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <a href='/pronunciations/{{ $pronunciation->id }}/edit' class="btn
             btn-primary btn-block"><i class='fa fa-pencil'></i> Edit</a>
             <br>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <form method='POST' action='/pronunciations/{{ $pronunciation->id }}'>
                 {{ csrf_field() }}
                 <button class="btn btn-default btn-block" type="submit">

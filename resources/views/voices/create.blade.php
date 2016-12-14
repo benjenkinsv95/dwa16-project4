@@ -50,21 +50,24 @@
                 </div>
             </div>
 
-
-            <div class='form-instructions'>
-                All fields are required
-            </div>
-
-            <div class="col-xs-12 col-sm-6">
-                <div class='form-group'>
-                    <button type="submit" class="form-control btn btn-primary btn-block">Add Voice</button>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class='form-instructions'>
+                        All fields are required
+                    </div>
                 </div>
-            </div>
 
-            <div class='error'>
-                @if(count($errors) > 0)
-                    Correct errors before submitting.
-                @endif
+                <div class="col-xs-12 col-sm-6">
+                    <div class='form-group'>
+                        <button type="submit" class="form-control btn btn-primary btn-block">Add Voice</button>
+                    </div>
+                </div>
+
+                <div class='error'>
+                    @if(count($errors) > 0)
+                        Correct errors before submitting.
+                    @endif
+                </div>
             </div>
         </fieldset>
 

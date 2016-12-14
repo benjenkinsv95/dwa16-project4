@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row container">
         @if(count($voices) == 0)
             <p>You have not added any voices, you can add a voice now to get started.</p>
             <a href="/voices/create" class="btn btn-primary

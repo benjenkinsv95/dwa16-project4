@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <div class="row">
+    <div class="row container">
         @if(count($pronunciations) == 0)
             You have not added any pronunciations, you can <a href='/pronunciations/create'>add a pronunciation now to get started</a>.
             <a href="/pronunciations/create" class="btn btn-primary

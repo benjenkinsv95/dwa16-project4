@@ -75,7 +75,7 @@
 
 
     <div class="page-content container">
-        <div class="row page-info">
+        <div class="row page-info container">
             @hasSection('title')
                 <h1>@yield('title')</h1>
             @endif
