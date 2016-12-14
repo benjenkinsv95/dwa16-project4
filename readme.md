@@ -1,4 +1,4 @@
-# Text-to-Phonetics Engine
+# Text2Phonetics Engine
 
 ## Live URL
 <http://p4.ben-jenkins.com>

@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url('/')
-                }}">Text-to-Phonetics Engine</a>
+                }}">Text2Phonetics Engine</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">

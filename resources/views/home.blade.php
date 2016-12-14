@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Text-to-Phonetics Engine')
+@section('title', 'Text2Phonetics Engine')
 @section('description', 'Create better pronunciations easier.')
 
 @section('content')
