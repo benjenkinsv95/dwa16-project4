@@ -22,10 +22,10 @@
                     <thead>
                     <tr>
                         <th>Voice</th>
-                        <th>Language</th>
-                        <th>Creator</th>
+                        <th class="hidden-xs">Language</th>
+                        <th class="hidden-xs">Creator</th>
                         <th>View</th>
-                        <th>Edit</th>
+                        <th class="hidden-xs">Edit</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,10 +33,10 @@
                         <tr>
                             <td><a class='btn btn-link' href='/voices/{{
                             $voice->id }}'>{{ $voice->name }}</a></td>
-                            <td>{{ $voice->language }}</td>
-                            <td><i class='fa fa-user'></i> {{ $voice->user->name }}</td>
+                            <td class="hidden-xs">{{ $voice->language }}</td>
+                            <td class="hidden-xs"><i class='fa fa-user'></i> {{ $voice->user->name }}</td>
                             <td><a class='btn btn-link' href='/voices/{{ $voice->id }}'><i class='fa fa-eye'></i> View</a></td>
-                            <td><a class='btn btn-link' href='/voices/{{ $voice->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
+                            <td class="hidden-xs"><a class='btn btn-link' href='/voices/{{ $voice->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -34,10 +34,10 @@
                     <tr>
                         <th>Word</th>
                         <th>Pronunciation</th>
-                        <th>Creator</th>
+                        <th class="hidden-xs">Creator</th>
                         <th>View</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
+                        <th class="hidden-xs">Edit</th>
+                        <th class="hidden-xs">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -47,10 +47,10 @@
 
                             <td>{{ $pronunciation->word }}</td>
                             <td>{{ $pronunciation->getAcapelaTag() }}</td>
-                            <td>{{ $pronunciation->user->name }}</td>
+                            <td class="hidden-xs">{{ $pronunciation->user->name }}</td>
                             <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}'><i class='fa fa-eye'></i> View</a></td>
-                            <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
-                            <td>
+                            <td class="hidden-xs"><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
+                            <td class="hidden-xs">
                                 <form method='POST' action='/pronunciations/{{ $pronunciation->id }}'>
                                     {{ csrf_field() }}
                                     <button class='btn btn-link' type="submit">
