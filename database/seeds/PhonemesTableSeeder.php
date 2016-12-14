@@ -15,10 +15,10 @@ class PhonemesTableSeeder extends Seeder
     {
         # word, voice name, phonemes(symbol, stress_level)
         $words = [
-            ['hello', 'Josh (Child)', [['h', 0], ['@', 0], ['l', 0], ['@U', 0]]],
-            ['tab', 'Josh (Child)', [['t', 0], ['{', 1], ['b', 0]]],
-            ['better', 'Josh (Child)', [['b', 0], ['E', 1], ['4', 0], ['r=', 0]]],
-            ['corner', 'Will (FromAfar)', [['k', 0], ['O', 1], ['r', 0], ['n', 0], ['r=', 0]]],
+            ['hello', 'Josh', [['h', 0], ['@', 0], ['l', 0], ['@U', 0]]],
+            ['tab', 'Josh', [['t', 0], ['{', 1], ['b', 0]]],
+            ['better', 'Josh', [['b', 0], ['E', 1], ['4', 0], ['r=', 0]]],
+            ['corner', 'WillFromAfar', [['k', 0], ['O', 1], ['r', 0], ['n', 0], ['r=', 0]]],
             ['bad', 'Graham', [['b', 0], ['{', 1], ['d', 0]]]
         ];
 

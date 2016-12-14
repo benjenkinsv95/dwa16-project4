@@ -17,7 +17,7 @@ class Voice extends Model
     }
 
     public static function getForDropdown() {
-        $voices = Voice::orderBy('language', 'name')->get();
+        $voices = Voice::orderBy('name')->get();
         $voices_for_dropdown = [];
 
         foreach($voices as $voice) {

@@ -15,10 +15,10 @@ class PronunciationsTableSeeder extends Seeder
     public function run()
     {
         $pronunciations = [
-            ['hello', 'Josh (Child)'],
-            ['tab', 'Josh (Child)'],
-            ['better', 'Josh (Child)'],
-            ['corner', 'Will (FromAfar)'],
+            ['hello', 'Josh'],
+            ['tab', 'Josh'],
+            ['better', 'Josh'],
+            ['corner', 'WillFromAfar'],
             ['bad', 'Graham']
         ];
 
