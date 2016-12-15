@@ -17,9 +17,9 @@ class PronunciationsTableSeeder extends Seeder
         $pronunciations = [
             ['hello', 'Josh'],
             ['tab', 'Josh'],
-            ['better', 'Josh'],
-            ['corner', 'WillFromAfar'],
-            ['bad', 'Graham']
+            ['measure', 'Josh'],
+            ['wait', 'WillFromAfar'],
+            ['zoo', 'Graham']
         ];
 
         $existingVoices = Voice::all()->keyBy('name')->toArray();

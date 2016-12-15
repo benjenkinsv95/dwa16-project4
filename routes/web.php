@@ -12,6 +12,7 @@
 */
 
 Route::get('/home', 'HomeController@index');
+Route::get('/getting_started', 'GettingStartedController@index')->name('getting_started.index');
 Route::get('/', 'HomeController@index');
 
 Route::get('/pronunciations', 'PronunciationController@index')->name('pronunciations.index');

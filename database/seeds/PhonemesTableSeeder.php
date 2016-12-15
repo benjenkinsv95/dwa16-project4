@@ -17,9 +17,9 @@ class PhonemesTableSeeder extends Seeder
         $words = [
             ['hello', 'Josh', [['h', 0], ['@', 0], ['l', 0], ['@U', 0]]],
             ['tab', 'Josh', [['t', 0], ['{', 1], ['b', 0]]],
-            ['better', 'Josh', [['b', 0], ['E', 1], ['4', 0], ['r=', 0]]],
-            ['corner', 'WillFromAfar', [['k', 0], ['O', 1], ['r', 0], ['n', 0], ['r=', 0]]],
-            ['bad', 'Graham', [['b', 0], ['{', 1], ['d', 0]]]
+            ['measure', 'Josh', [['m', 0], ['E', 1], ['Z', 0], ['r=', 0]]],
+            ['wait', 'WillFromAfar', [['w', 0], ['EI', 1], ['t', 0]]],
+            ['zoo', 'Graham', [['z', 0], ['u', 1]]]
         ];
 
         foreach($words as $word) {
