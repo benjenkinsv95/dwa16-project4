@@ -20,7 +20,7 @@
     {{ $pronunciation->voice->name }}
 
     <h3>Creator</h3>
-    {{$pronunciation->user->name }}
+    <i class='fa fa-user'></i> {{$pronunciation->user->name }}
 
     <br>
     <br>

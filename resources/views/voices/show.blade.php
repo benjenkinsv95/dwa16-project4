@@ -47,7 +47,7 @@
 
                             <td>{{ $pronunciation->word }}</td>
                             <td>{{ $pronunciation->getAcapelaTag() }}</td>
-                            <td class="hidden-xs">{{ $pronunciation->user->name }}</td>
+                            <td class="hidden-xs"><i class='fa fa-user'></i> {{ $pronunciation->user->name }}</td>
                             <td><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}'><i class='fa fa-eye'></i> View</a></td>
                             <td class="hidden-xs"><a class='btn btn-link' href='/pronunciations/{{ $pronunciation->id }}/edit'><i class='fa fa-pencil'></i> Edit</a></td>
                             <td class="hidden-xs">
